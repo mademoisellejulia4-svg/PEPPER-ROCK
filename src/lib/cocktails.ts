@@ -7,6 +7,7 @@ export type Cocktail = {
   ingredients: string;
   price: string;
   tint: [string, string];
+  image?: string;
 };
 
 export const cocktails: Cocktail[] = [
@@ -29,6 +30,7 @@ export const cocktails: Cocktail[] = [
     ingredients: "Havana 3yr Rum · Triple sec · Dark rum · Lime · Orgeat · Pineapple · Orange",
     price: "£8.50",
     tint: ["#e8a24a", "#8a4312"],
+    image: "/assets/img/cocktails/mai-tai.jpg",
   },
   {
     slug: "peppers-pornstar",
