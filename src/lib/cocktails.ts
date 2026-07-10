@@ -27,6 +27,7 @@ export const classicCocktails: ClassicCocktail[] = [
     ingredients:
       "Havana 3yr Rum, Triple Sec, Captain Morgan Dark Rum, Lime Juice, Orgeat Syrup, Pineapple Juice, Orange Juice",
     price: "£8.50",
+    image: "/assets/img/cocktails/mai-tai-cutout.webp",
   },
   {
     slug: "pina-colada",
