@@ -33,7 +33,7 @@ export const classicCocktails: ClassicCocktail[] = [
     name: "Piña Colada",
     ingredients: "Havana 3yr Rum, Malibu, Soya Milk, Pineapple Juice, Coconut Syrup",
     price: "£8.00",
-    image: "/assets/img/cocktails/pina-colada.jpg",
+    image: "/assets/img/cocktails/pina-colada-cutout.webp",
   },
   {
     slug: "cosmopolitan",

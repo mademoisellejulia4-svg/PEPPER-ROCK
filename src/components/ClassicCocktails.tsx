@@ -44,13 +44,13 @@ export default function ClassicCocktails() {
           >
             <div className={c.image ? "flex gap-4" : undefined}>
               {c.image && (
-                <div className="h-16 w-16 shrink-0 overflow-hidden rounded-sm border border-gold/20">
+                <div className="flex h-20 w-14 shrink-0 items-end justify-center">
                   <motion.img
                     src={c.image}
                     alt={c.name}
-                    variants={{ hover: { scale: 1.12 } }}
+                    variants={{ hover: { scale: 1.12, y: -2 } }}
                     transition={{ duration: 0.5, ease: [0.22, 0.61, 0.36, 1] }}
-                    className="h-full w-full object-cover"
+                    className="max-h-full max-w-full object-contain drop-shadow-[0_6px_10px_rgba(0,0,0,0.5)]"
                   />
                 </div>
               )}
