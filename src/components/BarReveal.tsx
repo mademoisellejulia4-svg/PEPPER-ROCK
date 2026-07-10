@@ -22,6 +22,8 @@ export default function BarReveal() {
   const sectionRef = useRef<HTMLElement>(null);
   const baseRef = useRef<HTMLDivElement>(null);
   const revealRef = useRef<HTMLDivElement>(null);
+  const shelfRef = useRef<HTMLDivElement>(null);
+  const bokehRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,10 +47,13 @@ export default function BarReveal() {
         0
       )
         .to(baseRef.current, { autoAlpha: 0.15, scale: 1.08, duration: 0.6, ease: "none" }, 0)
+        // depth: shelves drift slower than bokeh lights for a subtle parallax read
+        .fromTo(shelfRef.current, { y: 40 }, { y: -10, duration: 1, ease: "none" }, 0)
+        .fromTo(bokehRef.current, { y: 70 }, { y: -30, duration: 1, ease: "none" }, 0)
         .fromTo(
           textRef.current,
-          { autoAlpha: 0, y: 30 },
-          { autoAlpha: 1, y: 0, duration: 0.25, ease: "power1.out" },
+          { autoAlpha: 0, y: 30, filter: "blur(8px)" },
+          { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.25, ease: "power1.out" },
           0.55
         );
     }, section);
@@ -72,7 +77,7 @@ export default function BarReveal() {
           {/* wood counter */}
           <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-b from-wood/40 via-wood-dark to-noir" />
           {/* warm bokeh lights */}
-          <div className="absolute inset-0">
+          <div ref={bokehRef} className="absolute inset-0 will-change-transform">
             {[
               { l: "8%", t: "18%", s: 90 },
               { l: "22%", t: "10%", s: 60 },
@@ -94,7 +99,10 @@ export default function BarReveal() {
             ))}
           </div>
           {/* shelves of bottles */}
-          <div className="absolute inset-x-0 top-[14%] flex justify-center gap-3 px-6 md:top-[16%] md:gap-4">
+          <div
+            ref={shelfRef}
+            className="absolute inset-x-0 top-[14%] flex justify-center gap-3 px-6 will-change-transform md:top-[16%] md:gap-4"
+          >
             {BOTTLES.map((b, i) => (
               <div
                 key={i}

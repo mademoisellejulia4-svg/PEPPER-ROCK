@@ -8,10 +8,10 @@ export default function Menu() {
   return (
     <section id="menu" className="relative bg-noir px-6 py-28 md:px-10 md:py-36">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
         className="mx-auto mb-16 max-w-2xl text-center"
       >
         <span className="text-[11px] uppercase tracking-widest2 text-gold-bright/90">

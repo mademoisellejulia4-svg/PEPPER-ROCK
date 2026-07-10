@@ -9,21 +9,38 @@ const links = [
 ];
 
 export default function Nav() {
+  const [revealed, setRevealed] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const hero = document.getElementById("top");
+
+    const onScroll = () => {
+      const heroHeight = hero?.offsetHeight ?? 0;
+      const revealPoint = heroHeight * 0.86;
+      setRevealed(window.scrollY > revealPoint);
+      setScrolled(window.scrollY > revealPoint + 80);
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
     <nav
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ease-out ${
+        revealed
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none -translate-y-3 opacity-0"
+      } ${
         scrolled
-          ? "bg-noir/85 backdrop-blur-md border-b border-gold/15 py-3"
-          : "bg-transparent py-6"
+          ? "border-b border-gold/15 bg-noir/85 py-3 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent py-6"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-10">

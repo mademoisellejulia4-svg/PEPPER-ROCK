@@ -12,8 +12,8 @@ export default function MenuCard({
 }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.7, delay: (index % 3) * 0.08, ease: [0.22, 0.61, 0.36, 1] }}
       whileHover="hover"
