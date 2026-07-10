@@ -39,24 +39,40 @@ export default function ClassicCocktails() {
               delay: (i % 6) * 0.06,
               ease: [0.22, 0.61, 0.36, 1],
             }}
+            whileHover={c.image ? "hover" : undefined}
             className="group border-b border-gold/10 pb-5 transition-colors hover:border-gold/40"
           >
-            <div className="flex items-baseline justify-between gap-4">
-              <h3 className="font-display text-lg text-gold-bright transition-colors group-hover:text-gold-bright md:text-xl">
-                {c.name}
-              </h3>
-              <span className="whitespace-nowrap font-display text-base text-cream">
-                {c.price}
-              </span>
+            <div className={c.image ? "flex gap-4" : undefined}>
+              {c.image && (
+                <div className="h-16 w-16 shrink-0 overflow-hidden rounded-sm border border-gold/20">
+                  <motion.img
+                    src={c.image}
+                    alt={c.name}
+                    variants={{ hover: { scale: 1.12 } }}
+                    transition={{ duration: 0.5, ease: [0.22, 0.61, 0.36, 1] }}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              )}
+              <div className="min-w-0 flex-1">
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="font-display text-lg text-gold-bright transition-colors group-hover:text-gold-bright md:text-xl">
+                    {c.name}
+                  </h3>
+                  <span className="whitespace-nowrap font-display text-base text-cream">
+                    {c.price}
+                  </span>
+                </div>
+                {c.note && (
+                  <p className="mt-1 text-[11px] uppercase tracking-wide text-cream-dim/60">
+                    {c.note}
+                  </p>
+                )}
+                <p className="mt-2 text-xs leading-relaxed text-cream-dim/75">
+                  {c.ingredients}
+                </p>
+              </div>
             </div>
-            {c.note && (
-              <p className="mt-1 text-[11px] uppercase tracking-wide text-cream-dim/60">
-                {c.note}
-              </p>
-            )}
-            <p className="mt-2 text-xs leading-relaxed text-cream-dim/75">
-              {c.ingredients}
-            </p>
           </motion.div>
         ))}
       </div>

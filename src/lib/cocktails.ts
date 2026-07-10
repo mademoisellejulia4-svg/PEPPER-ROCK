@@ -16,6 +16,7 @@ export type ClassicCocktail = {
   note?: string;
   ingredients: string;
   price: string;
+  image?: string;
 };
 
 // The house classics list, Mai Tai first as the signature opener.
@@ -32,6 +33,7 @@ export const classicCocktails: ClassicCocktail[] = [
     name: "Piña Colada",
     ingredients: "Havana 3yr Rum, Malibu, Soya Milk, Pineapple Juice, Coconut Syrup",
     price: "£8.00",
+    image: "/assets/img/cocktails/pina-colada.jpg",
   },
   {
     slug: "cosmopolitan",
